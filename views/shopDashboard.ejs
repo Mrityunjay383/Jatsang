@@ -1,0 +1,31 @@
+<%- include("header") -%>
+
+  <section class="sec">
+    <h2><%= shopDetails.shopName%></h2>
+    <img src="<%= qrsrc%>" alt="">
+
+    <a href="/shop/addproduct">Add Product</a>
+
+    <div class="">
+      <% for(let i = 0; i < shopDetails.products.length; i++){%>
+        <div class="">
+          <p><%= shopDetails.products[i].title%></p>
+          <p><%= shopDetails.products[i].des%></p>
+          <p><%= shopDetails.products[i].price%></p>
+          <p><%= shopDetails.products[i].currStock%></p>
+
+          <form class="" action="/shop/delProduct" method="post">
+            <button type="submit" name="delBtn" value="<%= i%>">Delete Product</button>
+          </form>
+          <form class="" action="/shop/updStock" method="post">
+            <input type="Number" name="updStockVal" placeholder="new Stock">
+            <button type="submit" name="updStockBtn" value="<%= i%>">Update</button>
+          </form>
+
+        </div>
+      <%}%>
+    </div>
+  </section>
+
+</body>
+</html>
