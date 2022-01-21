@@ -1,11 +1,12 @@
 const mongoose = require('mongoose');
 
-const Product = require("/product");
 
 const orderSchema = new mongoose.Schema({
-  attachedCusID: String,
-  ShopID: String,
-  products: [Product]
+  userID: String,
+  shopID: String,
+  products: [Object],
+  totalVal: Number,
+  status: String
 });
 
-module.exports = mongoose.model("Order", productSchema);
+module.exports = mongoose.model("Order", orderSchema);

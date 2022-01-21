@@ -13,6 +13,7 @@ const indexRouter = require("./routes/index");
 const authRouter = require("./routes/auth");
 const shopRouter = require("./routes/shop");
 const cartRouter = require("./routes/cart");
+const orderRouter = require("./routes/order");
 
 
 const app = express();
@@ -40,6 +41,7 @@ app.use("/", indexRouter);
 app.use("/auth", authRouter);
 app.use("/shop", shopRouter);
 app.use("/cart", cartRouter);
+app.use("/order", orderRouter);
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
