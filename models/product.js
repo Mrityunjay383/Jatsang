@@ -8,4 +8,4 @@ const productSchema = new mongoose.Schema({
   currStock: Number
 });
 
-module.exports = mongoose.model("Product", shopSchema);
+module.exports = mongoose.model("Product", productSchema);

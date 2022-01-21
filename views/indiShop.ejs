@@ -1,0 +1,26 @@
+<%- include("header") -%>
+
+  <section class="sec">
+    <h2><%= shopDetails.shopName%></h2>
+
+    <div class="">
+      <% for(let product of products){%>
+        <div class="">
+          <p><%= product.title%></p>
+          <p><%= product.des%></p>
+          <p><%= product.price%></p>
+          <p><%= product.currStock%></p>
+
+          <form class="" action="/cart/addToCart" method="post">
+            <button type="submit" name="addBtn" value="<%= product._id%>">Add to cart</button>
+          </form>
+
+        </div>
+      <%}%>
+    </div>
+
+
+  </section>
+
+</body>
+</html>

@@ -7,6 +7,7 @@ const { auth, isLogedIn } = require('../Midelwares/auth.js');
 const Shop = require("../models/shop");
 const User = require("../models/user");
 const Product = require("../models/product");
+const Cart = require("../models/cart");
 
 
 router.get("/Dashboard", isLogedIn, auth, (req, res) => {
@@ -27,10 +28,13 @@ router.get("/Dashboard", isLogedIn, auth, (req, res) => {
         qr.toDataURL(address, (err, src) => {
           if (err) res.send("Error occured");
 
-          res.render("shopDashboard", {isLogedIn: req.isLogedIn,
-            isShopOwner: req.user.isShopOwner,
-            shopDetails: foundShop,
-            qrsrc:src
+          Product.find({ownerID: req.user._id}, (err, foundProducts) => {
+            res.render("shopDashboard", {isLogedIn: req.isLogedIn,
+              isShopOwner: req.user.isShopOwner,
+              shopDetails: foundShop,
+              products: foundProducts,
+              qrsrc:src
+            });
           });
         });
 
@@ -43,16 +47,16 @@ router.get("/Dashboard", isLogedIn, auth, (req, res) => {
 
 });
 
-router.get("/addproduct", (req, res) => {
+router.get("/addproduct",  auth, (req, res) => {
   res.render('addproducts', {isLogedIn: req.isLogedIn,
     isShopOwner: req.user.isShopOwner
   });
 });
 
 // Product FUnctionalities
-router.post("/addproduct", (req, res) => {
+router.post("/addproduct",  auth, (req, res) => {
   const newProduct = new Product({
-    adminID: req.user._id,
+    ownerID: req.user._id,
     title: req.body.title,
     des: req.body.des,
     price: Number(req.body.price),
@@ -64,76 +68,41 @@ router.post("/addproduct", (req, res) => {
 
 });
 
-router.post("/delProduct", (req, res) => {
-  const productIndex = req.body.delBtn;
+router.post("/delProduct",  auth, async (req, res) => {
+  const productID = req.body.delBtn;
 
-  Shop.findOne({ownerID: req.user._id}, (err, foundShop) => {
+  await Product.deleteOne({ _id: productID });
+  res.redirect("/shop/dashboard");
 
-    if(err){
-      res.redirect("/shop/dashboard");
-    }else{
+});
 
-      if(foundShop === undefined || foundShop == null || foundShop.length <= 0){
-        res.redirect("/shop/dashboard");
-      }else{
+router.post("/updStock",  auth, async (req, res) => {
+  const productID = req.body.updStockBtn;
+  const updStockVal = Number(req.body.updStockVal);
 
-        foundShop.products.splice(productIndex, 1);
-        foundShop.save();
-        res.redirect("/shop/dashboard");
-
-      }
-
-    }
-
+  Product.findOne({_id: productID}, (err, foundProduct) => {
+    foundProduct.currStock = updStockVal;
+    foundProduct.save();
+    res.redirect("/shop/dashboard");
   });
 
 });
 
-router.post("/updStock", async (req, res) => {
-  const productIndex = req.body.updStockBtn;
-  const updStockVal = Number(req.body.updStockVal);
-
-  await Shop.update(
-     {
-       ownerID: req.user._id,
-     },
-     { $set: { `products[${productIndex}].$.currStock` : updStockVal } }
-  );
-  res.redirect("/shop/dashboard");
-
-  // Shop.findOne({ownerID: req.user._id}, (err, foundShop) => {
-  //
-  //   if(err){
-  //     res.redirect("/shop/dashboard");
-  //   }else{
-  //
-  //     if(foundShop === undefined || foundShop == null || foundShop.length <= 0){
-  //       res.redirect("/shop/dashboard");
-  //     }else{
-  //
-  //       console.log(foundShop.products[productIndex]);
-  //
-  //       foundShop.products[productIndex]["currStock"] = Number(updStockVal);
-  //       foundShop.save((err) => {
-  //         if(err){
-  //           console.log(err);
-  //         }else{
-  //           res.redirect("/");
-  //           console.log(foundShop.products[productIndex]);
-  //           foundShop.markModified('products');
-  //         }
-  //
-  //       });
-  //     }
-  //
-  //   }
-  //
-  // });
-
-});
-
 router.get("/:shopCode", isLogedIn, auth, (req, res) => {
-  res.send(`Shop Code: ${req.params.shopCode}`);
+
+  const shopCode = req.params.shopCode;
+  req.session.url = req.url;
+
+  Shop.findOne({_id: shopCode}, (err, foundShop) => {
+    Product.find({ownerID: foundShop.ownerID}, (err, foundProducts) => {
+      res.render("indiShop", {isLogedIn: req.isLogedIn,
+        isShopOwner: req.user.isShopOwner,
+        shopDetails: foundShop,
+        products: foundProducts
+      })
+    });
+  });
+
 });
 
 module.exports = router

@@ -12,6 +12,8 @@ const port = 3000;
 const indexRouter = require("./routes/index");
 const authRouter = require("./routes/auth");
 const shopRouter = require("./routes/shop");
+const cartRouter = require("./routes/cart");
+
 
 const app = express();
 
@@ -37,6 +39,7 @@ mongoose.connect(process.env.DATABASE_URL, {useNewUrlParser: true, useUnifiedTop
 app.use("/", indexRouter);
 app.use("/auth", authRouter);
 app.use("/shop", shopRouter);
+app.use("/cart", cartRouter);
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);

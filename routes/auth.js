@@ -7,6 +7,7 @@ const { auth, isLogedIn } = require('../Midelwares/auth.js');
 
 const User = require("../models/user");
 const Shop = require("../models/shop");
+const Cart = require("../models/cart");
 
 router.get("/",isLogedIn, (req, res) => {
 
@@ -58,6 +59,13 @@ router.post("/register", (req, res) => {
         });
 
         newShop.save();
+      }else{
+        const newCart = new Cart({
+          userID: user._id,
+          index: 0,
+          product: []
+        });
+        newCart.save();
       }
 
       passport.authenticate("local")(req, res, () => {
