@@ -1,20 +1,29 @@
 <%- include("header") -%>
 
-  <section class="sec">
-    <h1>All Orders</h1>
+<section class="sec">
+  <h1>All Orders</h1>
 
-    <div class="orders">
-      <% for(let order of orders){%>
-        <div class="order">
-          <p><%= order.totalVal%></p>
-          <p><%= order.status%></p>
 
+  <div class="products">
+    <% for(let order of orders){%>
+    <div class="product">
+      <p class="proTitle"><%= order._id%></p>
+      <div class="proDes">
+
+        <ul>
           <% for(let product of order.products){%>
-              <p><%= product.title%></p>
+          <li><%= product.title%></li>
           <%}%>
-        </div>
-      <%}%>
+          </ul>
+
+          <p>Total Value: Rs.<%= order.totalVal%></p>
+          <p>Current Status: <%= order.status%></p>
+
+      </div>
+
     </div>
+    <%}%>
+  </div>
   </section>
 
 </body>

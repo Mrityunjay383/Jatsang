@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@400;700&family=Josefin+Sans:wght@400;700&display=swap');
+
+.sec h1, .sec h2, .sec h3, .sec h4, .sec h5, .sec h6{
+  font-family: 'Balsamiq Sans', cursive;
+  color: #444;
+}
+p{
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: normal;
+}
+.sec{
+  padding: 10vh 4%;
+  background-color: #FAFAFA;
+
+}
+.sec h2{
+  font-weight: 700;
+  font-size: 2.8rem;
+}
+
+.secTop{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10vh;
+}
+.actionBtn{
+  display: flex;
+  /* flex-direction: column; */
+}
+
+.actionBtn a {
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  -webkit-box-shadow: 0px 2px 5px #666666;
+  -moz-box-shadow: 0px 2px 5px #666666;
+  box-shadow: 0px 2px 5px #666666;
+  color: #fff;
+  font-size: 15px;
+  background: #FF4459;
+  padding: 8px 15px;
+  font-family: 'Josefin Sans', sans-serif;
+  margin: 20px 20px;
+  width: 30vh;
+  height: 40px;
+  text-align: center;
+
+}
+
+.actionBtn a:hover {
+  background: #fff;
+  color: #333;
+  text-decoration: none;
+}
+
+.qrCon{
+  text-align: center;
+}
+.qrCon img{
+  width: 17vw;
+}
+
+.products{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.product{
+  width: 25vw;
+  background-color: #fff;
+  box-shadow: 0px 10px 15px 10px rgb(230 230 230);
+  border-radius: 20px;
+  padding: 0 0px 20px;
+  margin: 30px 20px 0 0;
+}
+.proTitle{
+  background-color: #FF4459;
+  border-radius: 20px 20px 0 0;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  font-family: 'Balsamiq Sans', cursive;
+}
+.proDes{
+  padding: 0 20px;
+}
+
+.updForm{
+  margin: 20px 0;
+  display: flex;
+}

@@ -55,7 +55,7 @@ router.get("/addproduct",  auth, (req, res) => {
   });
 });
 
-router.get("/orders", (req, res) => {
+router.get("/orders", isLogedIn, auth, (req, res) => {
   Order.find({shopID: req.session.owwnerShopID}, (err, foundOrders) => {
     res.render("dashOrders", {isLogedIn: req.isLogedIn,
       isShopOwner: req.user.isShopOwner,

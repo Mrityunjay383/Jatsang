@@ -1,23 +1,25 @@
 <%- include("header") -%>
 
-  <section class="sec">
-    <h2><%= shopDetails.shopName%></h2>
+<section class="sec">
+  <h2><%= shopDetails.shopName%></h2>
 
-    <div class="">
-      <% for(let product of products){%>
-        <div class="">
-          <p><%= product.title%></p>
-          <p><%= product.des%></p>
-          <p><%= product.price%></p>
-          <p><%= product.currStock%></p>
 
-          <form class="" action="/cart/addToCart" method="post">
-            <button type="submit" name="addBtn" value="<%= product._id%>">Add to cart</button>
-          </form>
+  <div class="products">
+    <% for(let product of products){%>
+    <div class="product">
+      <p class="proTitle"><%= product.title%></p>
+      <div class="proDes">
+        <p><%= product.des%></p>
+        <p>Price: Rs.<%= product.price%></p>
 
-        </div>
-      <%}%>
+        <form class="" action="/cart/addToCart" method="post">
+          <button type="submit" name="addBtn" class="btn btn-dark" value="<%= product._id%>">Add to cart</button>
+        </form>
+      </div>
+
     </div>
+    <%}%>
+  </div>
 
 
   </section>

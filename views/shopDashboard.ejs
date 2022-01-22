@@ -1,31 +1,43 @@
 <%- include("header") -%>
 
-  <section class="sec">
-    <h2><%= shopDetails.shopName%></h2>
-    <img src="<%= qrsrc%>" alt="">
+<section class="sec">
+  <h2><%= shopDetails.shopName%></h2>
 
-    <a href="/shop/addproduct">Add Product</a>
+  <div class="secTop">
+    <div class="actionBtn">
+      <a href="/shop/orders">Orders</a>
+      <a href="/shop/addproduct">Add New Product</a>
+    </div>
+    <div class="qrCon">
+      <h4>This QR Code let Customers find your shop</h4>
+      <img src="<%= qrsrc%>" alt="">
+    </div>
+  </div>
 
-    <a href="/shop/orders">Orders</a>
+  <h3>Products</h3>
+  <div class="products">
+    <% for(let product of products){%>
+    <div class="product">
+      <p class="proTitle"><%= product.title%></p>
+      <div class="proDes">
+        <p><%= product.des%></p>
+        <p>Price: Rs.<%= product.price%></p>
+        <p>Current Stock: <%= product.currStock%> units</p>
 
-    <div class="">
-      <% for(let product of products){%>
-        <div class="">
-          <p><%= product.title%></p>
-          <p><%= product.des%></p>
-          <p><%= product.price%></p>
-          <p><%= product.currStock%></p>
-
-          <form class="" action="/shop/delProduct" method="post">
-            <button type="submit" name="delBtn" value="<%= product._id%>">Delete Product</button>
+        <form action="/shop/updStock" method="post">
+          <div class="form-group updForm">
+            <input type="Number" name="updStockVal" class="form-control" placeholder="new Stock">
+            <button type="submit" name="updStockBtn" class="btn btn-success" value="<%= product._id%>">Update</button>
+          </div>
           </form>
-          <form class="" action="/shop/updStock" method="post">
-            <input type="Number" name="updStockVal" placeholder="new Stock">
-            <button type="submit" name="updStockBtn" value="<%= product._id%>">Update</button>
-          </form>
 
-        </div>
-      <%}%>
+        <form class="" action="/shop/delProduct" method="post">
+          <button type="submit" name="delBtn" class="btn btn-danger" value="<%= product._id%>">Delete Product</button>
+        </form>
+      </div>
+
+    </div>
+    <%}%>
     </div>
   </section>
 

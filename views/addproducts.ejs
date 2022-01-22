@@ -1,13 +1,30 @@
 <%- include("header") -%>
 
-  <form class="" action="/shop/addproduct" method="post">
-    <input type="text" name="title" placeholder="Product Title" value="">
-    <input type="text" name="des" placeholder="Product Description" value="">
-    <input type="number" name="price" placeholder="Product Price" value="">
-    <input type="number" name="stock" placeholder="Current Stock" value="">
+<section class="sec">
 
-    <button type="submit" name="button">Add</button>
+  <form action="/shop/addproduct" method="post">
+    <div class="form-group">
+      <label for="title">Product Title</label>
+      <input type="text" class="form-control" name="title">
+    </div>
+    <div class="form-group">
+      <label for="des">Product Description</label>
+      <input type="text" class="form-control" name="des">
+    </div>
+    <div class="form-group">
+      <label for="price">Product Price</label>
+      <input type="number" class="form-control" name="price">
+    </div>
+    <div class="form-group">
+      <label for="stock">Current Stock</label>
+      <input type="number" class="form-control" name="stock">
+    </div>
+
+    <button type="submit" class="btn btn-success">Add Product</button>
   </form>
 
+</section>
+
 </body>
+
 </html>
