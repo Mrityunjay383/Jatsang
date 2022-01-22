@@ -5,14 +5,13 @@
 
     <div class="orders">
       <% for(let order of orders){%>
-        <div class="">
+        <div class="order">
           <p><%= order.totalVal%></p>
           <p><%= order.status%></p>
 
-          <% for(let product of orders.products){%>
+          <% for(let product of order.products){%>
               <p><%= product.title%></p>
           <%}%>
-
         </div>
       <%}%>
     </div>

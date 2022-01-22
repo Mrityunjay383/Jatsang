@@ -17,14 +17,25 @@ router.get("/", isLogedIn, auth, (req, res) => {
   });
 });
 
-// router.post("addNew", async (req, res) => {
-//
-//
-//
-//   // const newOrder = new Order({
-//   //   userID: req.user._id,
-//   //   shopID:
-//   // })
-// });
+router.post("/addNew", async (req, res) => {
+
+
+  await Cart.findOne({userID: req.user._id}, (err, foundCart) => {
+
+    const newOrder = new Order({
+      userID: req.user._id,
+      shopID: req.session.lastShopID,
+      products: foundCart.products,
+      totalVal: req.body.ordBtn,
+      status: "pending"
+    });
+
+    newOrder.save();
+
+    foundCart.products = [];
+    foundCart.save();
+    res.redirect("/order");
+  });
+});
 
 module.exports = router
