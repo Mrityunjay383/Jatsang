@@ -11,11 +11,19 @@ p{
 .sec{
   padding: 10vh 4%;
   background-color: #FAFAFA;
+  min-height: 88vh;
 
 }
 .sec h2{
   font-weight: 700;
   font-size: 2.8rem;
+}
+
+.lanSec img{
+  width: 50vw;
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }
 
 .secTop{
@@ -82,6 +90,9 @@ p{
   padding: 5px 0;
   font-family: 'Balsamiq Sans', cursive;
 }
+.prodes{
+  font-size: 0.9rem;
+}
 .proDes{
   padding: 0 20px;
 }
@@ -89,4 +100,32 @@ p{
 .updForm{
   margin: 20px 0;
   display: flex;
+}
+
+.cartCon{
+  display: flex;
+}
+
+.prodCon{
+  display: flex;
+  box-shadow: 0px 10px 15px 10px rgb(230 230 230);
+  padding: 20px 30px;
+  margin: 0 0 5vh;
+  justify-content: space-between;
+  align-items: center;
+}
+.rmBtn{
+  min-width: 20%;
+  display: flex;
+  justify-content: center;
+}
+
+.checkout{
+  min-width: 20%;
+  margin-left: 30px;
+  box-shadow: 0px 10px 15px 10px rgb(230 230 230);
+  padding: 20px 30px;
+  height: 50%;
+  position: sticky;
+  top: 14vh;
 }

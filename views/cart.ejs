@@ -1,23 +1,24 @@
 <%- include("header") -%>
 
-  <section class="sec">
-    <div class="products">
+  <section class="sec cartCon">
+    <div class="cartProd">
       <% let totalPrice = 0; for(let product of products){ totalPrice+=product.price%>
-        <div class="">
-          <p><%= product.title%></p>
-          <p><%= product.des%></p>
-          <p><%= product.price%></p>
-
-          <form class="" action="/cart/rmProduct" method="post">
-            <button type="submit" name="rmBtn" value="<%= product._id%>">Remove Product</button>
-          </form>
+        <div class="prodCon">
+          <div class="prodDetail">
+            <h3><%= product.title%></h3>
+            <p><%= product.des%></p>
+            <p>Price: Rs.<%= product.price%></p>
+          </div>
+            <form class="rmBtn" action="/cart/rmProduct" method="post">
+              <button type="submit" name="rmBtn" class="btn btn-danger" value="<%= product._id%>">Remove Product</button>
+            </form>
         </div>
       <%}%>
     </div>
     <div class="checkout">
-      <p>Total value of cart: <%= totalPrice%></p>
+      <p>Total value of cart: Rs.<%= totalPrice%></p>
       <form class="" action="/order/addNew" method="post">
-        <button type="submit" name="ordBtn" value="<%= totalPrice%>">Order</button>
+        <button type="submit" name="ordBtn" class="btn btn-success" value="<%= totalPrice%>">Place Order</button>
       </form>
     </div>
   </section>

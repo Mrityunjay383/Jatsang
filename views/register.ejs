@@ -12,14 +12,16 @@
 
       <div class="accType">
         <p>Sign Up as: </p>
-        <label class="switch">
-          <input type="checkbox" name="type">
+        <label id="type" class="switch">
+          <input id="typeCheck" type="checkbox" name="type">
           <span class="slider round"><b>Customer</b> <b>Shopkeeper</b></span>
         </label>
       </div>
 
-			<input type="text" name="shopName" placeholder="Shop Name" value="">
-			<input type="text" name="locatedAt" placeholder="Shop Located At (Enter city name)" value="">
+			<div id="shopType">
+				<input type="text" name="shopName" placeholder="Shop Name" value="">
+				<input type="text" name="locatedAt" placeholder="Shop Located At (Enter city name)" value="">
+			</div>
 
 			<button type="submit">Sign Up</button>
 		</form>

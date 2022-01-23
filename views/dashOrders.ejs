@@ -5,7 +5,7 @@
 
 
   <div class="products">
-    <% for(let order of orders){%>
+    <%orders.reverse(); for(let order of orders){%>
     <div class="product">
       <p class="proTitle"><%= order._id%></p>
       <div class="proDes">
@@ -19,12 +19,28 @@
           <p>Total Value: Rs.<%= order.totalVal%></p>
           <p>Current Status: <%= order.status%></p>
 
+          <form class="" action="/order/dashAction" method="post">
+            <button type="submit" name="actBtn" class="btn btn-dark" value="<%= order._id%>">
+              <% if(order.status == "Pending"){%>
+                Accept Order
+              <%}else if(order.status == "Accepted"){%>
+                Ready for Pickup
+              <%}else if(order.status == "Ready for pickup"){%>
+                Order Completed
+              <%}%>
+            </button>
+          </form>
+          <br>
+          <form class="" action="/order/del" method="post">
+            <button type="submit" name="delBtn" class="btn btn-danger" value="<%= order._id%>">Delete Order</button>
+          </form>
+
       </div>
 
     </div>
     <%}%>
   </div>
-  </section>
+</section>
 
 </body>
 </html>

@@ -4,42 +4,23 @@
     <h1>Your Orders</h1>
 
     <div class="products">
-      <% for(let product of products){%>
+      <% orders.reverse(); for(let order of orders){%>
       <div class="product">
-        <p class="proTitle"><%= product.title%></p>
+        <p class="proTitle"><%= order._id%></p>
         <div class="proDes">
-          <p><%= product.des%></p>
-          <p>Price: Rs.<%= product.price%></p>
-          <p>Current Stock: <%= product.currStock%> units</p>
 
-          <form action="/shop/updStock" method="post">
-            <div class="form-group updForm">
-              <input type="Number" name="updStockVal" class="form-control" placeholder="new Stock">
-              <button type="submit" name="updStockBtn" class="btn btn-success" value="<%= product._id%>">Update</button>
-            </div>
-            </form>
+          <ul>
+            <% for(let product of order.products){%>
+            <li><%= product.title%></li>
+            <%}%>
+            </ul>
 
-          <form class="" action="/shop/delProduct" method="post">
-            <button type="submit" name="delBtn" class="btn btn-danger" value="<%= product._id%>">Delete Product</button>
-          </form>
+            <p>Total Value: Rs.<%= order.totalVal%></p>
+            <p>Current Status: <%= order.status%></p>
+
         </div>
 
       </div>
-      <%}%>
-      </div>
-
-
-    <div class="orders">
-      <% for(let order of orders){%>
-        <div class="">
-          <% for(let product of orders.products){%>
-              <p><%= product.title%></p>
-          <%}%>
-
-          <p><%= order.totalVal%></p>
-          <p><%= order.status%></p>
-
-        </div>
       <%}%>
     </div>
   </section>

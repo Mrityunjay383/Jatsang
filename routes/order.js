@@ -27,7 +27,7 @@ router.post("/addNew", async (req, res) => {
       shopID: req.session.lastShopID,
       products: foundCart.products,
       totalVal: req.body.ordBtn,
-      status: "pending"
+      status: "Pending"
     });
 
     newOrder.save();
@@ -37,5 +37,37 @@ router.post("/addNew", async (req, res) => {
     res.redirect("/order");
   });
 });
+
+router.post("/dashAction", (req, res) => {
+  const orderID = req.body.actBtn;
+
+  console.log(orderID);
+
+  Order.findOne({_id: orderID}, async (err, foundOrder) => {
+    if(err){
+      console.log(err);
+    }else{
+
+      if(foundOrder.status == "Pending"){
+        foundOrder.status = "Accepted";
+      }else if(foundOrder.status == "Accepted"){
+        foundOrder.status = "Ready for pickup";
+      }else{
+        foundOrder.status = "Completed";
+      }
+      foundOrder.save();
+      res.redirect("/shop/orders");
+
+    }
+  });
+});
+
+router.post("/del", async (req, res) => {
+  const orderID = req.body.delBtn;
+
+  await Order.deleteOne({ _id: orderID });
+  res.redirect("/shop/orders");
+});
+
 
 module.exports = router

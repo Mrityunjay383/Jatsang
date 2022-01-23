@@ -2,6 +2,7 @@
 
 <section class="sec">
   <h2><%= shopDetails.shopName%></h2>
+  <p><%= shopDetails.locatedAt%></p>
 
   <div class="secTop">
     <div class="actionBtn">
@@ -20,7 +21,7 @@
     <div class="product">
       <p class="proTitle"><%= product.title%></p>
       <div class="proDes">
-        <p><%= product.des%></p>
+        <p class="prodes"><%= product.des%></p>
         <p>Price: Rs.<%= product.price%></p>
         <p>Current Stock: <%= product.currStock%> units</p>
 

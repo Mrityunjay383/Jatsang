@@ -55,7 +55,7 @@ router.post("/register", (req, res) => {
           ownerID: user._id,
           ownerName: user.name,
           shopName: req.body.shopName,
-          locatedAT: req.body.locatedATt,
+          locatedAt: req.body.locatedAt,
         });
 
         newShop.save();
