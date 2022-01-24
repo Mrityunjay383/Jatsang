@@ -26,3 +26,15 @@ Now customers once entered the shop can select products he/she wants to buy from
 The shopkeeper gets a notification of the order placed by the customer, then he can start preparing the product basket for that particular order, once complete he can mark the order as ready, the customer will get notified that his order is ready for pick up, he will go to the shop, give the order code to the shopkeeper and pick his order. There will also be a feature for the contact-less transaction for customers.
 
 By this process and with the help of the platform, not only we can reduce the number of people who have to gather together but also reduce the waiting time for customers as well as for shopkeepers, which helps them to serve even more customers at a single time, thus increases sales.
+
+Sample Accounts:
+----------------
+
+**UserNames: **
+
+-   shopkeeper1@jatsang
+-   shopkeeper2@jatsang
+-   customer1@jatsang
+-   customer1@jatsang
+
+**Password: **12345
