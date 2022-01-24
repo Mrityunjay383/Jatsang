@@ -30,11 +30,11 @@ By this process and with the help of the platform, not only we can reduce the nu
 Sample Accounts:
 ----------------
 
-**UserNames: **
+**UserNames:**
 
 -   shopkeeper1@jatsang
 -   shopkeeper2@jatsang
 -   customer1@jatsang
 -   customer1@jatsang
 
-**Password: **12345
+**Password:** 12345
