@@ -2,7 +2,15 @@
 
   <section class="sec">
     <div class="lanSec">
-      <h2>Now shops in your city <br>are at your fingertips.</h2>
+      <% if(isLogedIn){%>
+        <% if(isShopOwne){%>
+          <h2>Make Online presence of your business, this is what the world is doing rigth now.</h2>
+        <%}else{%>
+          <h2>Now shops in your city <br>are at your fingertips.</h2>
+        <%}%>
+      <%}else{%>
+        <h2>Now shops in your city <br>are at your fingertips.</h2>
+      <%}%>
       <img src="https://static.vecteezy.com/system/resources/previews/002/058/181/large_2x/takeaway-coffee-shop-concept-free-vector.jpg" alt="">
     </div>
   </section>
