@@ -4,6 +4,7 @@ function auth(req, res, next){
   }else{
     res.redirect("/auth");
   }
+
 }
 
 function isLogedIn(req, res, next){
